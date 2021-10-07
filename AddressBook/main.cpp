@@ -102,7 +102,7 @@ void show(addrbook * book)
 {
 	if (book->size == 0)
 	{
-		cout << "無聯絡人資料" << endl;
+		cout << "聯絡人資料為空" << endl;
 	}
 	else
 	{
@@ -124,10 +124,9 @@ void show(addrbook * book)
 				<< "  地址：" << book->array[i].addr
 				<<endl;
 		}
-		system("pause");
-		system("cls");
 	}
-
+	system("pause");
+	system("cls");
 }
 
 int check(addrbook* book , string name_check)
@@ -144,27 +143,45 @@ int check(addrbook* book , string name_check)
 
 void dele(addrbook *book)
 {
-	string name_check;
-	cout << "刪除聯絡人" << endl;
-	cout << "輸入姓名：";
-	cin >> name_check;
-	int name_res = check(book, name_check);
-	cout << name_res;
+	if (book->size == 0)
+	{
+		cout << "聯絡人資料為空" << endl;
+	}
+	else
+	{
+		string name_check;
+		cout << "刪除聯絡人" << endl;
+		cout << "輸入姓名：";
+		cin >> name_check;
+		int name_res = check(book, name_check);
+		if (name_res == -1)
+		{
+			cout << "找不到  "<< name_check <<"  的聯絡人資料" << endl;
+		}
+		else
+		{
+			for (int i = name_res; i < book->size; i++)
+			{
+				book->array[i] = book->array[i + 1];
+			}
+			book->size--;
+			cout <<"成功刪除 "<< name_check << " 的聯絡人資料" << endl;
+		}
+	}
+	system("pause");
+	system("cls");
 }
 
 int main()
 {
 	int select = 0;
-
 	addrbook book;
-
 	book.size = 0;
 
 	for (; ; )
 	{
 
 		Menu();
-
 		cin >> select;
 
 		switch (select)
