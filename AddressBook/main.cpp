@@ -142,9 +142,14 @@ int check(addrbook* book , string name_check)
 	return -1;
 }
 
-void dele()
+void dele(addrbook *book)
 {
-
+	string name_check;
+	cout << "刪除聯絡人" << endl;
+	cout << "輸入姓名：";
+	cin >> name_check;
+	int name_res = check(book, name_check);
+	cout << name_res;
 }
 
 int main()
@@ -171,6 +176,7 @@ int main()
 			show(&book);
 			break;
 		case 3:
+			dele(&book);
 			break;
 		default:
 			cout << "退出聯絡簿" << endl;
