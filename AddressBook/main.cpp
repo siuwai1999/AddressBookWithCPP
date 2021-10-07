@@ -130,6 +130,23 @@ void show(addrbook * book)
 
 }
 
+int check(addrbook* book , string name_check)
+{
+	for (int i = 0; i < book->size; i++)
+	{
+		if (book->array[i].name == name_check)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+void dele()
+{
+
+}
+
 int main()
 {
 	int select = 0;
@@ -153,6 +170,8 @@ int main()
 		case 2:
 			show(&book);
 			break;
+		case 3:
+			break;
 		default:
 			cout << "°h¥XÁpµ¸Ã¯" << endl;
 			system("pause");
@@ -160,7 +179,7 @@ int main()
 			break;
 		}
 
-	};
+	}
 
 	system("pause");
 	return 0;
