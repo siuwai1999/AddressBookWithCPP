@@ -172,6 +172,30 @@ void dele(addrbook *book)
 	system("cls");
 }
 
+void find(addrbook * book)
+{
+	string name_check;
+	cout << "查詢聯絡人" << endl;
+	cout << "輸入姓名：";
+	cin >> name_check;
+	int name_res = check(book, name_check);
+	if (name_res != -1)
+	{
+		cout << "姓名：" << book->array[name_res].name
+			<< "  性別：" << (book->array[name_res].sex == 1 ? "男" : "女")
+			<< "  年齡：" << book->array[name_res].age
+			<< "  電話：" << book->array[name_res].phone
+			<< "  地址：" << book->array[name_res].addr
+			<< endl;
+	}
+	else
+	{
+		cout << "找不到  " << name_check << "  的聯絡人資料" << endl;
+	}
+	system("pause");
+	system("cls");
+}
+
 int main()
 {
 	int select = 0;
@@ -194,6 +218,9 @@ int main()
 			break;
 		case 3:
 			dele(&book);
+			break;
+		case 4:
+			find(&book);
 			break;
 		default:
 			cout << "退出聯絡簿" << endl;
