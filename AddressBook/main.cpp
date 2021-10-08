@@ -5,6 +5,13 @@ using namespace std;
 
 #define MAX 1000
 
+void SetColor(int color = 7)
+{
+	HANDLE hConsole;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, color);
+}
+
 void pause_cls()
 {
 	system("pause");
@@ -37,6 +44,7 @@ void Menu()
 	cout << "\t\t***** 6 、 清空聯絡簿 *****" << endl;
 	cout << "\t\t***** 0 、 退出聯絡簿 *****" << endl;
 	cout << "\t\t***************************" << endl;
+	cout << " " << endl;
 };
 
 struct info
@@ -58,7 +66,9 @@ void add(addrbook * book)
 {
 	if (book->size == MAX)
 	{
+		SetColor(12);
 		cout << "聯絡簿已滿" << endl;
+		SetColor(10);
 		return;
 	}
 	else
@@ -72,7 +82,7 @@ void add(addrbook * book)
 		for (;;)
 		{
 			cout << "1 - 男 、 2 - 女" << endl;
-			cout << "姓別： ";
+			cout << "姓別：";
 			int sex_temp = 0;
 			cin >> sex_temp;
 			if (sex_temp == 1 || sex_temp == 2)
@@ -88,7 +98,7 @@ void add(addrbook * book)
 
 		for (;;)
 		{
-			cout << "年齡： ";
+			cout << "年齡：";
 			int age_temp = 0;
 			cin >> age_temp;
 			if (age_temp > 0)
@@ -102,12 +112,12 @@ void add(addrbook * book)
 			}
 		}
 
-		cout << "電話： ";
+		cout << "電話：";
 		string phone_temp;
 		cin >> phone_temp;
 		book->array[book->size].phone = phone_temp;
 
-		cout << "地址： ";
+		cout << "地址：";
 		string addr_temp;
 		cin >> addr_temp;
 		book->array[book->size].addr = addr_temp;
@@ -122,7 +132,9 @@ int null_check(addrbook *book)
 {
 	if (book->size == 0)
 	{
+		SetColor(12);
 		cout << "聯絡人資料為空" << endl;
+		SetColor(10);
 		pause_cls();
 		return 1;
 	}
@@ -134,24 +146,25 @@ int null_check(addrbook *book)
 
 void show(addrbook * book)
 {
-		for (int i = 0; i < book->size; i++)
-		{
-			//string sex_std;
-			//if (book->array[i].sex == 1)
-			//{
-			//	sex_std = "男";
-			//}
-			//else
-			//{
-			//	sex_std = "女";
-			//}
-			cout << "姓名：" << book->array[i].name
-				<< "  性別：" << (book->array[i].sex == 1 ? "男" : "女") /*sex_std*/
-				<< "  年齡：" << book->array[i].age
-				<< "  電話：" << book->array[i].phone
-				<< "  地址：" << book->array[i].addr
-				<<endl;
-		}
+	cout << "顯示聯絡人" << endl;
+	for (int i = 0; i < book->size; i++)
+	{
+		//string sex_std;
+		//if (book->array[i].sex == 1)
+		//{
+		//	sex_std = "男";
+		//}
+		//else
+		//{
+		//	sex_std = "女";
+		//}
+		cout << "姓名：" << book->array[i].name << "\t"
+			<< " 性別：" << (book->array[i].sex == 1 ? "男" : "女") << "\t" /*sex_std*/
+			<< " 年齡：" << book->array[i].age << "\t"
+			<< " 電話：" << book->array[i].phone << "\t"
+			<< " 地址：" << book->array[i].addr << "\t"
+			<<endl;
+	}
 	pause_cls();
 }
 
@@ -176,7 +189,9 @@ void dele(addrbook *book)
 		int name_res = check(book, name_check);
 		if (name_res == -1)
 		{
+			SetColor(12);
 			cout << "找不到  "<< name_check <<"  的聯絡人資料" << endl;
+			SetColor(10);
 		}
 		else
 		{
@@ -185,7 +200,9 @@ void dele(addrbook *book)
 				book->array[i] = book->array[i + 1];
 			}
 			book->size--;
+			SetColor(12);
 			cout <<"成功刪除 "<< name_check << " 的聯絡人資料" << endl;
+			SetColor(10);
 		}
 	pause_cls();
 }
@@ -208,7 +225,9 @@ void find(addrbook * book)
 	}
 	else
 	{
+		SetColor(12);
 		cout << "找不到  " << name_check << "  的聯絡人資料" << endl;
+		SetColor(10);
 	}
 	pause_cls();
 }
@@ -243,7 +262,9 @@ void change(addrbook * book)
 		cout << "地址：";
 		cin >> addr_temp;
 		book->array[name_res].addr = addr_temp;
+		SetColor(12);
 		cout << "成功修改 " << endl;
+		SetColor(10);
 	}
 	else
 	{
@@ -255,22 +276,24 @@ void change(addrbook * book)
 void deleall(addrbook * book)
 {
 	int deleall;
-	cout << "0 - 取消 、 1 - 確認" << endl;
+	cout << "0 - 取消  ";
+	SetColor(192);
+	cout << "1 - 確認" << endl;
+	SetColor(10);
 	cout << "清空聯絡簿：";
 	cin >> deleall;
 	if (deleall == 1)
 	{
 		book->size = 0;
+		SetColor(12);
 		cout << "已經清空全部聯絡人" << endl;
+		SetColor(10);
+	}
+	else
+	{
+		cout << "已取消" << endl;
 	}
 	pause_cls();
-}
-
-void SetColor(int color = 7)
-{
-	HANDLE hConsole;
-	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTextAttribute(hConsole, color);
 }
 
 int main()
@@ -283,6 +306,7 @@ int main()
 	{
 		SetColor(10);
 		Menu();
+		cout << "請選擇功能 ( 0 ~ 6 )：";
 		cin >> select;
 
 		switch (select)
@@ -321,7 +345,9 @@ int main()
 			}
 			break;
 		default:
+			SetColor(12);
 			cout << "退出聯絡簿" << endl;
+			SetColor(10);
 			system("pause");
 			return 0;
 			break;
