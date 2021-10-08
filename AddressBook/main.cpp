@@ -1,5 +1,6 @@
 #include<iostream>
 #include<string>
+#include <windows.h>
 using namespace std;
 
 #define MAX 1000
@@ -12,15 +13,30 @@ void pause_cls()
 
 void Menu()
 {
-	cout << "***************************" << endl;
-	cout << "***** 1 ¡B ²K¥[Ápµ¸¤H *****" << endl;
-	cout << "***** 2 ¡B Åã¥ÜÁpµ¸¤H *****" << endl;
-	cout << "***** 3 ¡B §R°£Ápµ¸¤H *****" << endl;
-	cout << "***** 4 ¡B ¬d¸ßÁpµ¸¤H *****" << endl;
-	cout << "***** 5 ¡B ­×§ïÁpµ¸¤H *****" << endl;
-	cout << "***** 6 ¡B ²MªÅÁpµ¸Ã¯ *****" << endl;
-	cout << "***** 0 ¡B °h¥XÁpµ¸Ã¯ *****" << endl;
-	cout << "***************************" << endl;
+	cout << " " << endl;
+	cout << "  ¢i¢i¢i¢i¢iùß  ¢i¢i¢i¢i¢i¢iùß  ¢i¢i¢i¢i¢i¢iùß  ¢i¢i¢i¢i¢i¢iùß  ¢i¢i¢i¢i¢i¢i¢iùß ¢i¢i¢i¢i¢i¢i¢iùß ¢i¢i¢i¢i¢i¢i¢iùß" << endl;
+	cout << " ¢i¢iùÝùùùù¢i¢iùß ¢i¢iùÝùùùù¢i¢iùß ¢i¢iùÝùùùù¢i¢iùß ¢i¢iùÝùùùù¢i¢iùß ¢i¢iùÝùùùùùùùùùå ¢i¢iùÝùùùùùùùùùå ¢i¢iùÝùùùùùùùùùå" << endl;
+	cout << " ¢i¢i¢i¢i¢i¢i¢iùø ¢i¢iùø  ¢i¢iùø ¢i¢iùø  ¢i¢iùø ¢i¢i¢i¢i¢i¢iùÝùå ¢i¢i¢i¢i¢iùß   ¢i¢i¢i¢i¢i¢i¢iùß ¢i¢i¢i¢i¢i¢i¢iùß" << endl;
+	cout << " ¢i¢iùÝùùùù¢i¢iùø ¢i¢iùø  ¢i¢iùø ¢i¢iùø  ¢i¢iùø ¢i¢iùÝùùùù¢i¢iùß ¢i¢iùÝùùùùùå   ùãùùùùùùùù¢i¢iùø ùãùùùùùùùù¢i¢iùø" << endl;
+	cout << " ¢i¢iùø  ¢i¢iùø ¢i¢i¢i¢i¢i¢iùÝùå ¢i¢i¢i¢i¢i¢iùÝùå ¢i¢iùø  ¢i¢iùø ¢i¢i¢i¢i¢i¢i¢iùß ¢i¢i¢i¢i¢i¢i¢iùø ¢i¢i¢i¢i¢i¢i¢iùø" << endl;
+	cout << " ùãùùùå  ùãùùùå ùãùùùùùùùùùùùå  ùãùùùùùùùùùùùå  ùãùùùå  ùãùùùå ùãùùùùùùùùùùùùùå ùãùùùùùùùùùùùùùå ùãùùùùùùùùùùùùùå" << endl;
+	cout << " " << endl;
+	cout << "\t¢i¢i¢i¢i¢i¢iùß      ¢i¢i¢i¢i¢i¢iùß      ¢i¢i¢i¢i¢i¢iùß     ¢i¢iùß  ¢i¢iùß " << endl;
+	cout << "\t¢i¢iùÝùùùù¢i¢iùß    ¢i¢iùÝùùùùùù¢i¢iùß    ¢i¢iùÝùùùùùù¢i¢iùß    ¢i¢iùø ¢i¢iùÝùå " << endl;
+	cout << "\t¢i¢i¢i¢i¢i¢iùÝùå    ¢i¢iùø   ¢i¢iùø    ¢i¢iùø   ¢i¢iùø    ¢i¢i¢i¢i¢iùÝùå " << endl;
+	cout << "\t¢i¢iùÝùùùù¢i¢iùß    ¢i¢iùø   ¢i¢iùø    ¢i¢iùø   ¢i¢iùø    ¢i¢iùÝùù¢i¢iùß " << endl;
+	cout << "\t¢i¢i¢i¢i¢i¢iùÝùå    ùã¢i¢i¢i¢i¢i¢iùÝùå    ùã¢i¢i¢i¢i¢i¢iùÝùå    ¢i¢iùø  ¢i¢iùß " << endl;
+	cout << "\tùãùùùùùùùùùùùå      ùãùùùùùùùùùùùå      ùãùùùùùùùùùùùå     ùãùùùå  ùãùùùå " << endl;
+	cout << " " << endl;
+	cout << "\t\t***************************" << endl;
+	cout << "\t\t***** 1 ¡B ²K¥[Ápµ¸¤H *****" << endl;
+	cout << "\t\t***** 2 ¡B Åã¥ÜÁpµ¸¤H *****" << endl;
+	cout << "\t\t***** 3 ¡B §R°£Ápµ¸¤H *****" << endl;
+	cout << "\t\t***** 4 ¡B ¬d¸ßÁpµ¸¤H *****" << endl;
+	cout << "\t\t***** 5 ¡B ­×§ïÁpµ¸¤H *****" << endl;
+	cout << "\t\t***** 6 ¡B ²MªÅÁpµ¸Ã¯ *****" << endl;
+	cout << "\t\t***** 0 ¡B °h¥XÁpµ¸Ã¯ *****" << endl;
+	cout << "\t\t***************************" << endl;
 };
 
 struct info
@@ -250,6 +266,13 @@ void deleall(addrbook * book)
 	pause_cls();
 }
 
+void SetColor(int color = 7)
+{
+	HANDLE hConsole;
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTextAttribute(hConsole, color);
+}
+
 int main()
 {
 	int select = 0;
@@ -258,7 +281,7 @@ int main()
 
 	for (; ; )
 	{
-
+		SetColor(10);
 		Menu();
 		cin >> select;
 
