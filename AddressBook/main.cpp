@@ -4,6 +4,12 @@ using namespace std;
 
 #define MAX 1000
 
+void pause_cls()
+{
+	system("pause");
+	system("cls");
+}
+
 void Menu()
 {
 	cout << "***************************" << endl;
@@ -12,7 +18,7 @@ void Menu()
 	cout << "***** 3 、 刪除聯絡人 *****" << endl;
 	cout << "***** 4 、 查詢聯絡人 *****" << endl;
 	cout << "***** 5 、 修改聯絡人 *****" << endl;
-	cout << "***** 6 、 清空聯絡人 *****" << endl;
+	cout << "***** 6 、 清空聯絡簿 *****" << endl;
 	cout << "***** 0 、 退出聯絡簿 *****" << endl;
 	cout << "***************************" << endl;
 };
@@ -92,20 +98,26 @@ void add(addrbook * book)
 
 		book->size++;
 		cout << "添加成功" << endl;
-		system("pause");
-		system("cls");
 	}
-
+	pause_cls();
 };
 
-void show(addrbook * book)
+int null_check(addrbook *book)
 {
 	if (book->size == 0)
 	{
 		cout << "聯絡人資料為空" << endl;
+		pause_cls();
+		return 1;
 	}
 	else
 	{
+		return 0;
+	}
+}
+
+void show(addrbook * book)
+{
 		for (int i = 0; i < book->size; i++)
 		{
 			//string sex_std;
@@ -124,9 +136,7 @@ void show(addrbook * book)
 				<< "  地址：" << book->array[i].addr
 				<<endl;
 		}
-	}
-	system("pause");
-	system("cls");
+	pause_cls();
 }
 
 int check(addrbook* book , string name_check)
@@ -143,12 +153,6 @@ int check(addrbook* book , string name_check)
 
 void dele(addrbook *book)
 {
-	if (book->size == 0)
-	{
-		cout << "聯絡人資料為空" << endl;
-	}
-	else
-	{
 		string name_check;
 		cout << "刪除聯絡人" << endl;
 		cout << "輸入姓名：";
@@ -167,9 +171,7 @@ void dele(addrbook *book)
 			book->size--;
 			cout <<"成功刪除 "<< name_check << " 的聯絡人資料" << endl;
 		}
-	}
-	system("pause");
-	system("cls");
+	pause_cls();
 }
 
 void find(addrbook * book)
@@ -192,8 +194,60 @@ void find(addrbook * book)
 	{
 		cout << "找不到  " << name_check << "  的聯絡人資料" << endl;
 	}
-	system("pause");
-	system("cls");
+	pause_cls();
+}
+
+void change(addrbook * book)
+{
+	string name_check;
+	cout << "修改聯絡人" << endl;
+	cout << "輸入姓名：";
+	cin >> name_check;
+	int name_res = check(book, name_check);
+	if (name_res != -1)
+	{
+		string name_temp;
+		cout << "姓名：";
+		cin >> name_temp;
+		book->array[name_res].name = name_temp;
+		int sex_temp;
+		cout << "1 - 男 、 2 - 女" << endl;
+		cout << "性別：";
+		cin >> sex_temp;
+		book->array[name_res].sex = sex_temp;
+		int age_temp;
+		cout << "年齡：";
+		cin >> age_temp;
+		book->array[name_res].age = age_temp;
+		string phone_temp;
+		cout << "電話：";
+		cin >> phone_temp;
+		book->array[name_res].phone = phone_temp;
+		string addr_temp;
+		cout << "地址：";
+		cin >> addr_temp;
+		book->array[name_res].addr = addr_temp;
+		cout << "成功修改 " << endl;
+	}
+	else
+	{
+		cout << "找不到  " << name_check << "  的聯絡人資料" << endl;
+	}
+	pause_cls();
+}
+
+void deleall(addrbook * book)
+{
+	int deleall;
+	cout << "0 - 取消 、 1 - 確認" << endl;
+	cout << "清空聯絡簿：";
+	cin >> deleall;
+	if (deleall == 1)
+	{
+		book->size = 0;
+		cout << "已經清空全部聯絡人" << endl;
+	}
+	pause_cls();
 }
 
 int main()
@@ -214,13 +268,34 @@ int main()
 			add(&book);
 			break;
 		case 2:
-			show(&book);
+			if (null_check(&book) != 1)
+			{
+				show(&book);
+			}
 			break;
 		case 3:
-			dele(&book);
+			if (null_check(&book) != 1)
+			{
+				dele(&book);
+			}
 			break;
 		case 4:
-			find(&book);
+			if (null_check(&book) != 1)
+			{
+				find(&book);
+			}
+			break;
+		case 5:
+			if (null_check(&book) != 1)
+			{
+				change(&book);
+			}
+			break;
+		case 6:
+			if (null_check(&book) != 1)
+			{
+				deleall(&book);
+			}
 			break;
 		default:
 			cout << "退出聯絡簿" << endl;
@@ -230,7 +305,6 @@ int main()
 		}
 
 	}
-
 	system("pause");
 	return 0;
 }
